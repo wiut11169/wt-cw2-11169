@@ -23,3 +23,6 @@ The application is to set up reminders. You can easily create, delete, update, a
 -  Codebase is structured using MVC method.
 -  Model, Views, Controllers
 -  Created Special tables for structure data with SQL.
+
+
+## GITHUB : https://github.com/wiut11169/wt-cw2-11169/tree/main/reminder
