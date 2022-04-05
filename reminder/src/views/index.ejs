@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="p-5 mt-3">
+			<h1 class="text-center">Reminder</h1>
+			<form
+				class="row input mt-3 w-50 mx-auto"
+				action="/post"
+				enctype="application/x-www-form-urlencoded"
+				method="post"
+			>
+				<input
+					required
+					type="text"
+					placeholder="Type..."
+					class="col-12 form-control mb-2"
+					name="remindername"
+				/>
+
+				<input type="time" name="remindertime" class="col-12 form-control mb-2" required />
+				<button class="btn btn-success btn-block">Add reminder</button>
+			</form>
+
+			<table class="table mt-5 text-center">
+				<thead>
+					<tr>
+						<th>Description</th>
+						<th>time</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<% for(var i=0; i < allReminder.length; i++) { %>
+				<tbody id="tbody">
+					<td><%= allReminder[i].reminder_name %></td>
+					<td><%= allReminder[i].reminder_time %></td>
+					<td>
+						<form action="/update/<%= allReminder[i].reminder_id %>?_method=PUT" method="post">
+							<a class="btn btn-warning" href="/edit/<%= allReminder[i].reminder_id %>"> Edit </a>
+						</form>
+					</td>
+					<td>
+						<form action="/delete/<%= allReminder[i].reminder_id %>?_method=DELETE" method="post">
+							<button class="btn btn-danger">Delete</button>
+						</form>
+					</td>
+				</tbody>
+				<% } %>
+			</table>
+		</div>
+
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
